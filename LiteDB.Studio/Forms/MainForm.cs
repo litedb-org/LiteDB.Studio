@@ -1,15 +1,9 @@
-﻿using ICSharpCode.TextEditor;
-using LiteDB.Engine;
-using LiteDB.Studio.Forms;
+﻿using LiteDB.Studio.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,8 +22,20 @@ namespace LiteDB.Studio
         private ConnectionString _connectionString = null;
         private SqlCodeCompletion _codeCompletion;
 
-        public MainForm(string filename)
+        public MainForm(string[] args)
         {
+            string filename = null;
+            bool upgrade = false;
+
+            if (args.Length >= 1)
+            {
+                filename = args[0];
+            }
+            if (args.Length >= 2)
+            {
+                bool.TryParse(args[1], out upgrade);
+            }
+            
             InitializeComponent();
 
             // For performance https://stackoverflow.com/questions/4255148/how-to-improve-painting-performance-of-datagridview
@@ -45,7 +51,7 @@ namespace LiteDB.Studio
             }
             else
             {
-                this.Connect(new ConnectionString(filename));
+                this.Connect(new ConnectionString(filename){Upgrade = upgrade });
             }
 
             txtSql.ActiveTextAreaControl.TextArea.Caret.PositionChanged += (s, e) =>
