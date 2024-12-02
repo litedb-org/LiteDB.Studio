@@ -1,4 +1,4 @@
-﻿namespace LiteDB.Studio.Forms
+namespace LiteDB.Studio.Forms
 {
     partial class ConnectionForm
     {
@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxConnectionMode = new System.Windows.Forms.GroupBox();
             this.radModeShared = new System.Windows.Forms.RadioButton();
             this.radModeDirect = new System.Windows.Forms.RadioButton();
             this.btnOK = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog.InitialDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnOpen = new System.Windows.Forms.Button();
             this.txtInitialSize = new System.Windows.Forms.TextBox();
@@ -49,28 +50,29 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.chkReadonly = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.buttonBuildDefaultFileName = new System.Windows.Forms.Button();
+            this.groupBoxConnectionMode.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupBoxConnectionMode
             // 
-            this.groupBox1.Controls.Add(this.radModeShared);
-            this.groupBox1.Controls.Add(this.radModeDirect);
-            this.groupBox1.Location = new System.Drawing.Point(12, 11);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(569, 60);
-            this.groupBox1.TabIndex = 27;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Connection Mode";
+            this.groupBoxConnectionMode.Controls.Add(this.radModeShared);
+            this.groupBoxConnectionMode.Controls.Add(this.radModeDirect);
+            this.groupBoxConnectionMode.Location = new System.Drawing.Point(12, 11);
+            this.groupBoxConnectionMode.Name = "groupBoxConnectionMode";
+            this.groupBoxConnectionMode.Size = new System.Drawing.Size(569, 60);
+            this.groupBoxConnectionMode.TabIndex = 27;
+            this.groupBoxConnectionMode.TabStop = false;
+            this.groupBoxConnectionMode.Text = "Connection Mode";
             // 
             // radModeShared
             // 
             this.radModeShared.AutoSize = true;
             this.radModeShared.Location = new System.Drawing.Point(151, 25);
             this.radModeShared.Name = "radModeShared";
-            this.radModeShared.Size = new System.Drawing.Size(76, 24);
+            this.radModeShared.Size = new System.Drawing.Size(92, 29);
             this.radModeShared.TabIndex = 10;
             this.radModeShared.Text = "Shared";
             this.radModeShared.UseVisualStyleBackColor = true;
@@ -81,7 +83,7 @@
             this.radModeDirect.Checked = true;
             this.radModeDirect.Location = new System.Drawing.Point(30, 25);
             this.radModeDirect.Name = "radModeDirect";
-            this.radModeDirect.Size = new System.Drawing.Size(70, 24);
+            this.radModeDirect.Size = new System.Drawing.Size(83, 29);
             this.radModeDirect.TabIndex = 9;
             this.radModeDirect.TabStop = true;
             this.radModeDirect.Text = "Direct";
@@ -116,12 +118,13 @@
             // 
             this.txtInitialSize.Location = new System.Drawing.Point(151, 61);
             this.txtInitialSize.Name = "txtInitialSize";
-            this.txtInitialSize.Size = new System.Drawing.Size(70, 27);
+            this.txtInitialSize.Size = new System.Drawing.Size(70, 31);
             this.txtInitialSize.TabIndex = 24;
             this.txtInitialSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonBuildDefaultFileName);
             this.groupBox2.Controls.Add(this.btnOpen);
             this.groupBox2.Controls.Add(this.txtFilename);
             this.groupBox2.Location = new System.Drawing.Point(12, 81);
@@ -135,7 +138,7 @@
             // 
             this.txtFilename.Location = new System.Drawing.Point(19, 28);
             this.txtFilename.Name = "txtFilename";
-            this.txtFilename.Size = new System.Drawing.Size(502, 27);
+            this.txtFilename.Size = new System.Drawing.Size(502, 31);
             this.txtFilename.TabIndex = 2;
             // 
             // groupBox3
@@ -162,7 +165,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(274, 103);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(15, 20);
+            this.label4.Size = new System.Drawing.Size(19, 25);
             this.label4.TabIndex = 38;
             this.label4.Text = "/";
             // 
@@ -174,7 +177,7 @@
             this.cmbSort.FormattingEnabled = true;
             this.cmbSort.Location = new System.Drawing.Point(292, 100);
             this.cmbSort.Name = "cmbSort";
-            this.cmbSort.Size = new System.Drawing.Size(117, 28);
+            this.cmbSort.Size = new System.Drawing.Size(117, 33);
             this.cmbSort.TabIndex = 37;
             // 
             // label2
@@ -182,7 +185,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(18, 103);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 20);
+            this.label2.Size = new System.Drawing.Size(86, 25);
             this.label2.TabIndex = 36;
             this.label2.Text = "Collation:";
             // 
@@ -194,7 +197,7 @@
             this.cmbCulture.FormattingEnabled = true;
             this.cmbCulture.Location = new System.Drawing.Point(151, 100);
             this.cmbCulture.Name = "cmbCulture";
-            this.cmbCulture.Size = new System.Drawing.Size(117, 28);
+            this.cmbCulture.Size = new System.Drawing.Size(117, 33);
             this.cmbCulture.TabIndex = 35;
             // 
             // chkUpgrade
@@ -202,7 +205,7 @@
             this.chkUpgrade.AutoSize = true;
             this.chkUpgrade.Location = new System.Drawing.Point(21, 175);
             this.chkUpgrade.Name = "chkUpgrade";
-            this.chkUpgrade.Size = new System.Drawing.Size(269, 24);
+            this.chkUpgrade.Size = new System.Drawing.Size(319, 29);
             this.chkUpgrade.TabIndex = 33;
             this.chkUpgrade.Text = "Upgrade from LiteDB v4 (if needed)";
             // 
@@ -211,7 +214,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
+            this.label1.Size = new System.Drawing.Size(91, 25);
             this.label1.TabIndex = 32;
             this.label1.Text = "Password:";
             // 
@@ -220,7 +223,7 @@
             this.txtPassword.Location = new System.Drawing.Point(151, 22);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(404, 27);
+            this.txtPassword.Size = new System.Drawing.Size(404, 31);
             this.txtPassword.TabIndex = 4;
             // 
             // chkReadonly
@@ -228,7 +231,7 @@
             this.chkReadonly.AutoSize = true;
             this.chkReadonly.Location = new System.Drawing.Point(21, 139);
             this.chkReadonly.Name = "chkReadonly";
-            this.chkReadonly.Size = new System.Drawing.Size(97, 24);
+            this.chkReadonly.Size = new System.Drawing.Size(116, 29);
             this.chkReadonly.TabIndex = 27;
             this.chkReadonly.Text = "Read only";
             this.chkReadonly.UseVisualStyleBackColor = true;
@@ -239,19 +242,29 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(18, 64);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 20);
+            this.label3.Size = new System.Drawing.Size(135, 25);
             this.label3.TabIndex = 30;
             this.label3.Text = "Initial Size (MB):";
+            // 
+            // buttonBuildDefaultFileName
+            // 
+            this.buttonBuildDefaultFileName.Location = new System.Drawing.Point(318, 0);
+            this.buttonBuildDefaultFileName.Name = "buttonBuildDefaultFileName";
+            this.buttonBuildDefaultFileName.Size = new System.Drawing.Size(203, 23);
+            this.buttonBuildDefaultFileName.TabIndex = 4;
+            this.buttonBuildDefaultFileName.Text = "Build Default File Name";
+            this.buttonBuildDefaultFileName.UseVisualStyleBackColor = true;
+            this.buttonBuildDefaultFileName.Click += new System.EventHandler(this.buttonBuildDefaultFileName_Click);
             // 
             // ConnectionForm
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(596, 436);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxConnectionMode);
             this.Controls.Add(this.btnOK);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -263,8 +276,8 @@
             this.Text = "Connection Manager";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.ConnectionForm_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.ConnectionForm_DragEnter);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxConnectionMode.ResumeLayout(false);
+            this.groupBoxConnectionMode.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -274,7 +287,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxConnectionMode;
         private System.Windows.Forms.RadioButton radModeDirect;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
@@ -294,5 +307,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbCulture;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button buttonBuildDefaultFileName;
     }
 }

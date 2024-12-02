@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using ICSharpCode.TextEditor.Util;
+
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace LiteDB.Studio.Forms
 {
@@ -28,7 +26,7 @@ namespace LiteDB.Studio.Forms
 
             chkUpgrade.Checked = cs.Upgrade;
 
-            cmbCulture.DataSource = 
+            cmbCulture.DataSource =
                 CultureInfo.GetCultures(CultureTypes.AllCultures)
                 .Select(x => x.LCID)
                 .Distinct()
@@ -128,6 +126,13 @@ namespace LiteDB.Studio.Forms
             {
                 txtFilename.Text = ((System.Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
             }
+        }
+
+        private void buttonBuildDefaultFileName_Click(object sender, EventArgs e)
+        {
+            var fileName = $"{DateTime.Now:yyyyMMddHHmmss}.db";
+            var fullFileNamePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            txtFilename.Text = fullFileNamePath;
         }
     }
 }
