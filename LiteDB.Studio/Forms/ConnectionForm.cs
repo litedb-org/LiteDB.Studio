@@ -51,6 +51,12 @@ namespace LiteDB.Studio.Forms
 
         private void BtnConnect_Click(object sender, EventArgs e)
         {
+            if (!AppSettingsManager.IsDbExist(txtFilename.Text))
+            {
+                MessageBox.Show($"Field {groupBox2.Text} should contains valid path to database file, please check it out.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             this.ConnectionString.Connection =
                 radModeDirect.Checked ? ConnectionType.Direct :
                 radModeShared.Checked ? ConnectionType.Shared : ConnectionType.Direct;
